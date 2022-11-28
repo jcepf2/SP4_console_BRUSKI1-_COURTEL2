@@ -18,5 +18,13 @@ public PlateauDeJeu(){//constructeur plateaudejeu
         }
     }
 }   
+
+public int ajouterJetonDansColonne(Jeton m, int i){//renvoie true ou false en fonction de la présence du jeton dans la cellule
+    for (int k=0;k<6;k++){
+        if(grille[k][i].presenceJeton()==false){
+            grille[k][i].affecterJeton(n);//ajoute le jeton en paramètre à la cellule
+            return k;
+        }
+
 }
 
