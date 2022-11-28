@@ -22,9 +22,21 @@ public PlateauDeJeu(){//constructeur plateaudejeu
 public int ajouterJetonDansColonne(Jeton m, int i){//renvoie true ou false en fonction de la présence du jeton dans la cellule
     for (int k=0;k<6;k++){
         if(grille[k][i].presenceJeton()==false){
-            grille[k][i].affecterJeton(n);//ajoute le jeton en paramètre à la cellule
-            return k;
+            grille[k][i].affecterJeton(m);//ajoute le jeton en paramètre à la cellule
         }
-
+                    return k;//renvoi d'un entier correspondant à l'indice de la ligne
+    }
+        return 0;//car deux briques imbriquées impliquent deux return statement
 }
+        
+public boolean grilleRemplie(){
+    for(int j=0;j<7;j++){
+        if (grille[5][j].presenceJeton()==false){
+            return false;
+                        }
+                    }
+    return true;//si grille est pleine, le joueur ne peut plus jouer
+        }
+}
+
 

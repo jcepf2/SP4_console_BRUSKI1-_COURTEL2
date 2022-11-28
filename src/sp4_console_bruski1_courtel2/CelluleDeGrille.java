@@ -25,7 +25,7 @@ public class CelluleDeGrille { //création de la class CelluleDeGrille
         }
     }
     
-    public void afficherJeton(Jeton un_jeton) {/*on ajoute le jeton en parametre a la cellule*/    
+    public void affecterJeton(Jeton un_jeton) {/*on ajoute le jeton en parametre a la cellule*/    
         jetonCourant = un_jeton;
     }
     
