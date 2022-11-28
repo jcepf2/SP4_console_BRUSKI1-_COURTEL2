@@ -11,4 +11,12 @@ package sp4_console_bruski1_courtel2;
 public class PlateauDeJeu {//création d'une nouvelle classe
     private CelluleDeGrille[][]grille=new CelluleDeGrille[6][7];//il s’agit d’un tableau de 6 par 7 objets de type CelluleDeGrille
 
+public PlateauDeJeu(){//constructeur plateaudejeu
+    for (int k=0;k<6;k++){
+        for(int i=0;i<7;k++){
+            grille[k][i]  = new CelluleDeGrille();//on crée ici 42 céllules vides de type CelluleDeGrille
+        }
+    }
+}   
 }
+
