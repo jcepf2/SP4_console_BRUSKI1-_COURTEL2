@@ -54,9 +54,18 @@ public boolean grilleRemplie(){
     grille[x][y].lireCouleurDuJeton();//retourne  la valeur de presenceJeton() de CelluleDeGrille aux coordonnées [x][y]
     }
 
+    public boolean etreGagnantePourCouleur(String c){
+    boolean B1 = ligneGagnantePourCouleur(c);
+    boolean B2 = colonneGagnantePourCouleur(c);
+    boolean B3 = diagonaleMontanteGagnantePourCouleur(c);
+    boolean B4 = diagonaleDesencanteGagnantePourCouleur(c);  
+if (B1 == true || B2 == true || B3 == true || B4 == true ){
+    return true;//renvoie true si la grille est gagnante pour la couleur passée en paramètre
+}
+return false;
+
+}
 //les lignes suivantes sont la décomposition de la methode etreGagnantePourCouleur
-
-
 public boolean diagonaleDesencanteGagnantePourCouleur(String C){
     for (int k=5;k>3;k--){
         for (int i=3;i>0;k--){
