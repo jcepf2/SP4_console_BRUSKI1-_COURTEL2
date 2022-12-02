@@ -109,4 +109,11 @@ public boolean ligneGagnantePourCouleur(String C){
     }
     return false;//renvoi false si la grille n'est pas gagnante
 }
+
+public boolean colonneRemplie(int y){//y car colonne
+    if(grille[5][y].presenceJeton()==false){
+        return false;
+    }
+    return true;//renvoie  true si la colonne est remplie
+}
 }
