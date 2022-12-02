@@ -28,7 +28,7 @@ public int ajouterJetonDansColonne(Jeton m, int i){//renvoie true ou false en fo
     }
         return 0;//car deux briques imbriquées impliquent deux return statement
 }
-        
+       
 public boolean grilleRemplie(){
     for(int j=0;j<7;j++){
         if (grille[5][j].presenceJeton()==false){
@@ -37,6 +37,67 @@ public boolean grilleRemplie(){
                     }
     return true;//si grille est pleine, le joueur ne peut plus jouer
         }
+
+    public void afficherGrilleSurConsole(){//fonction d'affichage de la grille sur la console
+    for (int k=5;k>0;k--){
+        for (int i=6;k>0;k--){
+            grille[k][i].toString();
+        }
+    }
+    }
+    
+    public void presenceJeton(int x, int y){
+    grille[x][y].presenceJeton();
+    }
+    
+    public void  lireCouleurDuJeton(int x, int y){
+    grille[x][y].lireCouleurDuJeton();//retourne  la valeur de presenceJeton() de CelluleDeGrille aux coordonnées [x][y]
+    }
+
+//les lignes suivantes sont la décomposition de la methode etreGagnantePourCouleur
+
+
+public boolean diagonaleDesencanteGagnantePourCouleur(String C){
+    for (int k=5;k>3;k--){
+        for (int i=3;i>0;k--){
+            if (C==grille[k][i].lireCouleurDuJeton()& C==grille[k-1][i+1].lireCouleurDuJeton()& C==grille[k-2][i+2].lireCouleurDuJeton() & C==grille[k-3][i+3].lireCouleurDuJeton()){
+                return true;
+        }
+        }
+    }
+    return false;
 }
 
+public boolean colonneGagnantePourCouleur(String C){
+    for (int k=2;k>0;k--){
+        for (int i=6;i>0;k--){
+            if (C==grille[k][i].lireCouleurDuJeton()& C==grille[k+1][i].lireCouleurDuJeton()& C==grille[k+2][i].lireCouleurDuJeton() & C==grille[k+3][i].lireCouleurDuJeton()){
+                return true;//renvoie true si la grille est gagnante
+        }
+        }
+    }
+    return false;//renvoi false si la grille n'est gagnante
+}
 
+public boolean diagonaleMontanteGagnantePourCouleur(String C){
+    for (int k=2;k>0;k--){
+        for (int i=3;i>0;k--){
+            if (C==grille[k][i].lireCouleurDuJeton()& C==grille[k+1][i+1].lireCouleurDuJeton()& C==grille[k+2][i+2].lireCouleurDuJeton() & C==grille[k+3][i+3].lireCouleurDuJeton()){
+                return true;
+        }
+        }
+    }
+    return false;
+}
+
+public boolean ligneGagnantePourCouleur(String C){
+    for (int k=5;k>0;k--){
+        for (int i=3;i>0;k--){
+            if (C==grille[k][i].lireCouleurDuJeton()& C==grille[k][i+1].lireCouleurDuJeton()& C==grille[k][i+2].lireCouleurDuJeton() & C==grille[k][i+3].lireCouleurDuJeton()){
+                return true;//renvoie true si la grille est gagnante
+            }
+        }
+    }
+    return false;//renvoi false si la grille n'est pas gagnante
+}
+}
