@@ -9,7 +9,7 @@ package sp4_console_bruski1_courtel2;
  * @author jules
  */
 public class CelluleDeGrille { //création de la class CelluleDeGrille
-    private Jeton jetonCourant; //ajout attribut "jetonCourant" associé au Jeton
+    public Jeton jetonCourant; //ajout attribut "jetonCourant" associé au Jeton
     
     public CelluleDeGrille() { //initialisation de l'attribut
         jetonCourant = null;
@@ -43,7 +43,8 @@ public class CelluleDeGrille { //création de la class CelluleDeGrille
         jetonCourant = null;
         return (temp);
     }
-    @Override//ecrase
+
+@Override//ecrase
 public String toString (){//creation de la methode toString
     String clr=lireCouleurDuJeton();
     String chaine_a_retourner ;//initialisation d'une variable
@@ -58,5 +59,5 @@ public String toString (){//creation de la methode toString
         chaine_a_retourner="J";
     }
 return chaine_a_retourner;//renvoi de la variable au systee en interne
-}
+    }
 }

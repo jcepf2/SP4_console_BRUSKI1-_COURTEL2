@@ -19,9 +19,9 @@ public class Jeton { //création de la class Jeton
         return couleur;
     }
 
+
 @Override
-public String toString() { /*methode qui retourne chaine de caractere à afficher 
-    en fonction de l'objet "jeton"*/
+public String toString() { //methode qui retourne chaine de caractere à afficher en fonction de l'objet "jeton"
     if (couleur == "rouge"){ 
         return "R";
     }

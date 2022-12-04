@@ -32,7 +32,7 @@ public int ajouterJetonDansColonne(Jeton m, int i){//renvoie true ou false en fo
 public boolean grilleRemplie(){
     for(int j=0;j<7;j++){
         if (grille[5][j].presenceJeton()==false){
-            return false;
+            return false;//si il rest des cases vides, le joueur peut encore jouer
                         }
                     }
     return true;//si grille est pleine, le joueur ne peut plus jouer
@@ -47,7 +47,7 @@ public boolean grilleRemplie(){
     }
     
     public void presenceJeton(int x, int y){
-    grille[x][y].presenceJeton();
+    grille[x][y].presenceJeton();//retourne simplement la valeur de la méthode presenceJeton()
     }
     
     public void  lireCouleurDuJeton(int x, int y){
@@ -70,11 +70,11 @@ public boolean diagonaleDesencanteGagnantePourCouleur(String C){
     for (int k=5;k>3;k--){
         for (int i=3;i>0;k--){
             if (C==grille[k][i].lireCouleurDuJeton()& C==grille[k-1][i+1].lireCouleurDuJeton()& C==grille[k-2][i+2].lireCouleurDuJeton() & C==grille[k-3][i+3].lireCouleurDuJeton()){
-                return true;
+                return true;//renvoie true si laligne est gagnante
         }
         }
     }
-    return false;
+    return false;//renvoie false sinon
 }
 
 public boolean colonneGagnantePourCouleur(String C){
@@ -85,7 +85,7 @@ public boolean colonneGagnantePourCouleur(String C){
         }
         }
     }
-    return false;//renvoi false si la grille n'est gagnante
+    return false;//renvoie false si la grille n'est gagnante
 }
 
 public boolean diagonaleMontanteGagnantePourCouleur(String C){
@@ -96,7 +96,7 @@ public boolean diagonaleMontanteGagnantePourCouleur(String C){
         }
         }
     }
-    return false;
+    return false;//renvoie false sinon
 }
 
 public boolean ligneGagnantePourCouleur(String C){
@@ -107,7 +107,18 @@ public boolean ligneGagnantePourCouleur(String C){
             }
         }
     }
-    return false;//renvoi false si la grille n'est pas gagnante
+    return false;//renvoie false si la grille n'est pas gagnante
+}
+
+public void tasserColonne (int i){
+        for (int k=0; i<6; i++){//parcourt la colonne concernee de bas en haut
+        if (k==1){
+            grille[k][i].jetonCourant=null;
+        }else if (grille[k][i].jetonCourant==null){
+                grille[k][i].jetonCourant=grille[k+1][i].jetonCourant;
+                grille[k+1][i].jetonCourant=null;   
+            }
+        }
 }
 public boolean colonneRemplie(int y){//y car colonne
     if(grille[5][y].presenceJeton()==false){
@@ -116,3 +127,34 @@ public boolean colonneRemplie(int y){//y car colonne
     return true;//renvoie  true si la colonne est remplie
 }
 }
+public boolean presenceTrouNoir(int k, int i){//appelle la methode presencetrounoir de l'objet celluledegrille
+    boolean n = grille[k][i].presenceTrouNoir();
+    return n;
+}
+public void placerTrouNoir(int k, int i){//appelle la methode placertrounoir de l'objet celluledegrille
+    grille[k][i].placerTrouNoir();
+}
+public void supprimerTrouNoir(int k, int i){////appelle la methode supprimertrounoir de l'objet celluledegrille
+    grille[k][i].supprimerTrouNoir();
+}
+
+public boolean presenceDesintegrateur(int k, int i){//appelle la methode presencedesintegrateur de l'objet celluledegrille
+    boolean m = grille[k][i].presenceDesintegrateur();
+    return m;
+}
+public void placerDesintegrateur(int k, int i){//appelle la methode placerdesintegrateur de l'objet celluledegrille
+    grille[k][i].placerDesintegrateur();
+}
+public void supprimerDesintegrateur(int k, int i){//appelle la methode supprimerdesintegrateur de l'objet celluledegrille
+    grille[k][i].supprimerDesintegrateur();
+}
+
+public void supprimerJeton(int k, int j){//appelle la methode supprimerjeton de l'objet celluledegrille
+    grille[k][i].supprimerJeton();
+}
+public Jeton recupererJeton(int k, int j){//appelle la methode recupererjeton de l'objet celluledegrille
+    RJ = grille[k][i].recupererJeton();
+    return recup;
+}
+}
+
