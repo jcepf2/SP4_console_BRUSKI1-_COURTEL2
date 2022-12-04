@@ -24,11 +24,9 @@ public String toString() { /*methode qui retourne chaine de caractere à affiche
     en fonction de l'objet "jeton"*/
     if (couleur == "rouge"){ 
         return "R";
-    }
-        else if (couleur == "jaune"){
+    } else if (couleur == "jaune"){
             return "J";
-        }
-            else {
+        } else {
                 return "erreur";
             }
     }
