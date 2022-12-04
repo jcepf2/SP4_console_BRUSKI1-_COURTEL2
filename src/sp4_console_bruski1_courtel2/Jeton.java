@@ -15,6 +15,7 @@ public class Jeton { //création de la class Jeton
         attribut couleur du jeton avec la valeur passée en paramètre*/
         couleur = une_couleur; 
     }
+    
     public String lireCouleur() {
         return couleur;
     }
