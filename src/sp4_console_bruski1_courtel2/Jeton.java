@@ -15,6 +15,7 @@ public class Jeton { //création de la class Jeton
         attribut couleur du jeton avec la valeur passée en paramètre*/
         couleur = une_couleur; 
     }
+    
     public String lireCouleur() {
         return couleur;
     }
@@ -24,11 +25,9 @@ public class Jeton { //création de la class Jeton
 public String toString() { //methode qui retourne chaine de caractere à afficher en fonction de l'objet "jeton"
     if (couleur == "rouge"){ 
         return "R";
-    }
-        else if (couleur == "jaune"){
+    } else if (couleur == "jaune"){
             return "J";
-        }
-            else {
+        } else {
                 return "erreur";
             }
     }

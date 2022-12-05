@@ -1,4 +1,4 @@
-/*
+/* 
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -69,7 +69,7 @@ return false;
 public boolean diagonaleDesencanteGagnantePourCouleur(String C){
     for (int k=5;k>3;k--){
         for (int i=3;i>0;k--){
-            if (C==grille[k][i].lireCouleurDuJeton()& C==grille[k-1][i+1].lireCouleurDuJeton()& C==grille[k-2][i+2].lireCouleurDuJeton() & C==grille[k-3][i+3].lireCouleurDuJeton()){
+            if (C==grille[k][i].lireCouleurDuJeton() && C==grille[k-1][i+1].lireCouleurDuJeton() && C==grille[k-2][i+2].lireCouleurDuJeton() && C==grille[k-3][i+3].lireCouleurDuJeton()){
                 return true;//renvoie true si laligne est gagnante
         }
         }
@@ -80,7 +80,7 @@ public boolean diagonaleDesencanteGagnantePourCouleur(String C){
 public boolean colonneGagnantePourCouleur(String C){
     for (int k=2;k>0;k--){
         for (int i=6;i>0;k--){
-            if (C==grille[k][i].lireCouleurDuJeton()& C==grille[k+1][i].lireCouleurDuJeton()& C==grille[k+2][i].lireCouleurDuJeton() & C==grille[k+3][i].lireCouleurDuJeton()){
+            if (C==grille[k][i].lireCouleurDuJeton() && C==grille[k+1][i].lireCouleurDuJeton() && C==grille[k+2][i].lireCouleurDuJeton() && C==grille[k+3][i].lireCouleurDuJeton()){
                 return true;//renvoie true si la grille est gagnante
         }
         }
@@ -91,7 +91,7 @@ public boolean colonneGagnantePourCouleur(String C){
 public boolean diagonaleMontanteGagnantePourCouleur(String C){
     for (int k=2;k>0;k--){
         for (int i=3;i>0;k--){
-            if (C==grille[k][i].lireCouleurDuJeton()& C==grille[k+1][i+1].lireCouleurDuJeton()& C==grille[k+2][i+2].lireCouleurDuJeton() & C==grille[k+3][i+3].lireCouleurDuJeton()){
+            if (C==grille[k][i].lireCouleurDuJeton() && C==grille[k+1][i+1].lireCouleurDuJeton() && C==grille[k+2][i+2].lireCouleurDuJeton() && C==grille[k+3][i+3].lireCouleurDuJeton()){
                 return true;
         }
         }
@@ -114,7 +114,7 @@ public void tasserColonne (int i){
         for (int k=0; i<6; i++){//parcourt la colonne concernee de bas en haut
         if (k==1){
             grille[k][i].jetonCourant=null;
-        }else if (grille[k][i].jetonCourant==null){
+        } else if (grille[k][i].jetonCourant==null){
                 grille[k][i].jetonCourant=grille[k+1][i].jetonCourant;
                 grille[k+1][i].jetonCourant=null;   
             }
@@ -125,6 +125,42 @@ public boolean colonneRemplie(int y){//y car colonne
         return false;
     }
     return true;//renvoie  true si la colonne est remplie
+    }
+
+    public boolean presenceTrouNoir(int k, int i){//appelle la methode presencetrounoir de l'objet celluledegrille
+        boolean n = grille[k][i].presenceTrouNoir();
+        return n;
+    }
+
+    public void placerTrouNoir(int k, int i){//appelle la methode placertrounoir de l'objet celluledegrille
+        grille[k][i].placerTrouNoir();
+    }
+    
+    public void supprimerTrouNoir(int k, int i){////appelle la methode supprimertrounoir de l'objet celluledegrille
+        grille[k][i].supprimerTrouNoir();
+    }
+
+    public boolean presenceDesintegrateur(int k, int i){//appelle la methode presencedesintegrateur de l'objet celluledegrille
+        boolean m = grille[k][i].presenceDesintegrateur();
+        return m;
+    }
+    
+    public void placerDesintegrateur(int k, int i){//appelle la methode placerdesintegrateur de l'objet celluledegrille
+        grille[k][i].placerDesintegrateur();
+    }
+    
+    public void supprimerDesintegrateur(int k, int i){//appelle la methode supprimerdesintegrateur de l'objet celluledegrille
+        grille[k][i].supprimerDesintegrateur();
+    }
+
+    public void supprimerJeton(int k, int i){//appelle la methode supprimerjeton de l'objet celluledegrille
+        grille[k][i].supprimerJeton();
+    }
+    
+    public Jeton recupererJeton(int k, int i){//appelle la methode recupererjeton de l'objet celluledegrille
+        Jeton recup= grille[k][i].recupererJeton();
+        return recup;
+    }
 }
 }
 public boolean presenceTrouNoir(int k, int i){//appelle la methode presencetrounoir de l'objet celluledegrille
@@ -157,4 +193,3 @@ public Jeton recupererJeton(int k, int j){//appelle la methode recupererjeton de
     return recup;
 }
 }
-
