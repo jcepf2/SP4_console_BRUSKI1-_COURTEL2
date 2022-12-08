@@ -4,6 +4,8 @@
  */
 package sp4_console_bruski1_courtel2;
 
+import java.awt.Graphics;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import sp4_console_bruski1_courtel2.CelluleDeGrille;
 
@@ -12,7 +14,49 @@ import sp4_console_bruski1_courtel2.CelluleDeGrille;
  * @author jules
  */
 
-public class CelluleGraphique extends JButton {
+public class CelluleGraphique extends JButton{
     CelluleDeGrille celluleAssociee;
+    ImageIcon img_Vide = new javax.swing.ImageIcon(getClass().getResource("/images/celluleVide.png"));
+    ImageIcon img_desintegrateur = new javax.swing.ImageIcon(getClass().getResource("/images/desintegrateur.png"));
+    ImageIcon img_jetonJaune = new javax.swing.ImageIcon(getClass().getResource("/images/jetonJaune.png"));
+    ImageIcon img_jetonRouge = new javax.swing.ImageIcon(getClass().getResource("/images/jetonRouge.png"));
+    ImageIcon img_trouNoir = new javax.swing.ImageIcon(getClass().getResource("/images/trouNoir.png"));
+   
+    public CelluleGraphique (CelluleDeGrille uneCellule){
+        celluleAssociee = uneCellule;
+    }
     
+    @Override
+    public void paintComponent (Graphics G){
+      super.paintComponent(G);
+      if(celluleAssociee.presenceTrouNoir()==true){
+          setIcon(img_trouNoir); 
+      }
+      else {
+          if(celluleAssociee.presenceDesintegrateur()==true){
+          setIcon(img_desintegrateur); 
+      }
+          else{
+              String couleur_jeton= celluleAssociee.lireCouleurDuJeton(); 
+              switch (couleur_jeton){
+                  case "case vide":
+                      setIcon(img_Vide);
+                      
+                      break;
+                  case "rouge":
+                          setIcon(img_jetonRouge); 
+                      break;
+                  case "jaune":
+                          setIcon (img_jetonJaune);
+                      break;
+                  default : 
+                         setIcon(img_Vide);
+                   
+              }
+          
+      
+      
+    }
+      }
+    }
 }

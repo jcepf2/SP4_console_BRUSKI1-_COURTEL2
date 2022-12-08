@@ -11,10 +11,10 @@ import java.util.ArrayList;
  * @author jules
  */
 public class Joueur {
-    private String nomJoueur ;
-    private String couleur ;
+    String nomJoueur ;
+    String couleur ;
     private ArrayList <Jeton> reserveJetons = new ArrayList<Jeton>() ;
-    private int nombreDesintegrateurs ;
+    int nombreDesintegrateurs ;
     
     public void Joueur(String un_nom) {
         nomJoueur = un_nom ;
@@ -22,8 +22,20 @@ public class Joueur {
         nombreDesintegrateurs = 0 ;
     }
     
-    public void affecterCouleur(String une_couleur) {
-        couleur = une_couleur ;
+    public Joueur(String un_nom){
+        nomJoueur = un_nom;
+    }
+    
+       public void leNom(String le_n){
+        nomJoueur = le_n;
+    }
+    
+    public String afficherNom (){
+        return nomJoueur;
+    }
+    
+public String afficherCouleur(){
+        return couleur;
     }
     
     public int nombreDeJetons() {
@@ -37,16 +49,33 @@ public class Joueur {
     
     public Jeton jouerJeton() {
         int m = nombreDeJetons() ;
-        Jeton j = reserveJetons.remove(m) ;
+        Jeton j = reserveJetons.remove(0) ;
         return j ;
     }
     
     public void  obtenirDesintegrateur() {
         nombreDesintegrateurs += 1 ;
     }
+
+    public void affecterCouleur(String couleur) {
+        this.couleur = couleur;
+    }
     
-    public void  utiliserDesintegrateur() {
-        nombreDesintegrateurs -= 1 ;
+     public String affecterCouleur() {
+         return couleur;
+     }
+    
+    public boolean  utiliserDesintegrateur() {
+        if (nombreDesintegrateurs > 0) {
+            nombreDesintegrateurs -= 1 ;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public int NombreDesintegrateurs() {
+        return nombreDesintegrateurs;
     }
 }
+
 
