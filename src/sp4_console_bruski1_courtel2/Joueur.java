@@ -13,16 +13,15 @@ import java.util.ArrayList;
 public class Joueur {
     String nomJoueur ;
     String couleur ;
-    private ArrayList <Jeton> reserveJetons = new ArrayList<Jeton>() ;
+    private ArrayList <Jeton> reserveJetons;
     int nombreDesintegrateurs ;
     
-    public void Joueur(String un_nom) {
+    public Joueur(String un_nom) {
+        
         nomJoueur = un_nom ;
-        reserveJetons = null ;
+        reserveJetons = new ArrayList() ;
         nombreDesintegrateurs = 0 ;
-    }
-    
-    public Joueur(String un_nom){
+   
         nomJoueur = un_nom;
     }
     

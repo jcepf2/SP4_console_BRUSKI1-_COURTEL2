@@ -15,7 +15,7 @@ public class SP4_console_BRUSKI1_COURTEL2 {
     /**
      * @param args the command line arguments
      */
-    public static void fmain(String[] args) {
+    public static void main(String[] args) {
         // TODO code application logic here
         Joueur J1 = new Joueur("nom_joueur1");
         
@@ -25,7 +25,7 @@ public class SP4_console_BRUSKI1_COURTEL2 {
 
         game.initialiserPartie();
 
-        game.grille_jeu.afficherGrilleSurConsole();
+        
         game.LancerPartie();
 
     }

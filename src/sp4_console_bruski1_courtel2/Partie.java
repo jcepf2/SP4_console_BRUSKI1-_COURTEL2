@@ -9,13 +9,14 @@ import java.util.Scanner;
 import java.util.Random;
     
 public class Partie {
-    Joueur[] listeJoueurs;
+    
+    Joueur[] listeJoueurs = new Joueur[2];
     Joueur joueurCourant;
-    PlateauDeJeu plateau;
-    PlateauDeJeu grille_jeu = new PlateauDeJeu();
+    private PlateauDeJeu plateau;
+    
     
     public Partie(Joueur Joueur1, Joueur Joueur2){
-        listeJoueurs = new Joueur[2];
+        plateau=new PlateauDeJeu();
         listeJoueurs [0]=Joueur1;
         listeJoueurs [1]=Joueur2;
         }
@@ -31,11 +32,12 @@ public class Partie {
             listeJoueurs [1].affecterCouleur("rouge");
         }
     }
-        public void creerEtAffecterJeton(Joueur joueur) {
-        Jeton[] jetons = new Jeton[30];
+        public void creerEtAffecterJeton(Joueur j_oueur) {
+        String clr=j_oueur.afficherCouleur();
+        
         for (int i = 0; i < 30; i++) {
-            jetons[i] = new Jeton(joueur.couleur);
-            joueur.ajouterJeton(jetons[i]);
+            
+            j_oueur.ajouterJeton(new Jeton(clr));
         }
     }
 
@@ -44,7 +46,7 @@ public class Partie {
         Random c = new Random();
         for (int i = 0; i < 3; i++) {
             int ligne = l.nextInt(0, 6);
-            int colonne = c.nextInt(0, 7);
+            int colonne = c.nextInt(0, 5);
             if (plateau.presenceTrouNoir(ligne, colonne) == false && plateau.presenceDesintegrateur(ligne, colonne) == false) {
                 plateau.placerTrouNoir(ligne, colonne);
                 plateau.placerDesintegrateur(ligne, colonne);
@@ -54,7 +56,7 @@ public class Partie {
         }
         for (int j = 0; j < 2; j++) {
             int ligne = l.nextInt(0, 6);
-            int colonne = c.nextInt(0, 7);
+            int colonne = c.nextInt(0, 5);
             if (plateau.presenceDesintegrateur(ligne, colonne) == false) {
                 plateau.placerDesintegrateur(ligne, colonne);
             } else {
@@ -73,36 +75,41 @@ public class Partie {
     }
 
      public void initialiserPartie() {
-               
+         Scanner saisie_joueur = new Scanner(System.in);
+        System.out.println("Quel est le nom du joueur 1 ?");
+        /*on demande le nom du premier joueur*/
+        String nom_j1 = saisie_joueur.next();
+        Joueur J1 = new Joueur(nom_j1);
+        listeJoueurs[0]=J1;
+        /*on lui affecte son nom*/
+
+        System.out.println("Quel est le nom du joueur 2 ?");
+        /*on demande le nom du second joueur*/
+        String nom_j2 = saisie_joueur.next();
+        Joueur J2 = new Joueur(nom_j2);
+        listeJoueurs[1]=J2;
+        
+        
         attribuerCouleurAuxJoueurs();
-        creerEtAffecterJeton(listeJoueurs [0]);
-        creerEtAffecterJeton(listeJoueurs[1]);
+        creerEtAffecterJeton(J1);
+        creerEtAffecterJeton(J2);
         placerTrousNoirsEtDesintegrateurs();
     }
 
    
         public void LancerPartie() {
+            Scanner saisie_joueur = new Scanner(System.in);
         /*mise en place de la grille*/
         plateau.viderGrille();
         int choix_joueur;
         int nombre_joué = 0;
 
         /*création des joueurs*/
-        Scanner saisie_joueur = new Scanner(System.in);
-        System.out.println("Quel est le nom du joueur 1 ?");
-        /*on demande le nom du premier joueur*/
-        String nom_j1 = saisie_joueur.next();
-        listeJoueurs[0].Joueur(nom_j1);
-        /*on lui affecte son nom*/
-
-        System.out.println("Quel est le nom du joueur 2 ?");
-        /*on demande le nom du second joueur*/
-        String nom_j2 = saisie_joueur.next();
-        listeJoueurs[1].Joueur(nom_j2);
+        
 
         /*on récupère le nom et la couleur affectée aux joueurs*/
         placerTrousNoirsEtDesintegrateurs();
-        grille_jeu.afficherGrilleSurConsole();
+        plateau.afficherGrilleSurConsole();
         System.out.println(listeJoueurs[0].nomJoueur + " est de couleur " + listeJoueurs[0].couleur);
         System.out.println(listeJoueurs[1].nomJoueur + " est de couleur " + listeJoueurs[1].couleur);
 
@@ -164,7 +171,7 @@ public class Partie {
                         if (plateau.presenceDesintegrateur(ligne, colonne)) {
                             plateau.supprimerDesintegrateur(ligne, colonne);
                             joueurCourant.obtenirDesintegrateur();
-
+                            
                     }
                 }
                

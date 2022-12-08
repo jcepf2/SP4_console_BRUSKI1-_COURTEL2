@@ -96,30 +96,38 @@ public class CelluleDeGrille { //création de la class CelluleDeGrille
     
     @Override//ecrase
 public String toString (){//creation de la methode toString
-    String clr=lireCouleurDuJeton();
-    String chaine_a_retourner ;//initialisation d'une variable
-    chaine_a_retourner="erreur" ;
+        if (this.presenceJeton()==false){
+        
     
-    if (jetonCourant==null && avoirDesintegrateur == false &&avoirTrouNoir == false){
-        chaine_a_retourner="." ;
+
+        
+        
+        if(this.presenceTrouNoir()==true&&this.presenceDesintegrateur()==true){
+            return"@";
+        }
+        
+         if(this.presenceTrouNoir()==true){
+            return"@";
+        }
+        
+        if(this.presenceDesintegrateur()==true){
+            return"D";
+        }
+        return".";
     }
+        
     
-    if(clr=="rouge"){
-        chaine_a_retourner="R" ;
+    else{
+    if(this.lireCouleurDuJeton()=="rouge"){
+            return "R";   
+        }
+
+        if (this.lireCouleurDuJeton()=="jaune"){
+            return"J";
+ 
+        }
     }
-    
-    if(clr=="jaune"){
-        chaine_a_retourner="J" ;
-    }
-    
-    if(avoirTrouNoir == true) {
-        chaine_a_retourner= "@" ;
-    }
-    
-    if(avoirDesintegrateur == true) {
-        chaine_a_retourner= "D" ;
-    }
-    // retourne les caracteres en fonction des conditions de chaques cases
-    return chaine_a_retourner ;//renvoi de la variable au systee en interne
-    }
+    return "k";
 }
+}
+

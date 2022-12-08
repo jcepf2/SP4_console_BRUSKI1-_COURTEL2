@@ -56,32 +56,14 @@ public class PlateauDeJeu { //on crée notre tableau
     }
 
     public void afficherGrilleSurConsole() {
-        for (int i = 5; i >= 0; i--) {
-            for (int j = 0; j < 7; j++) {
-                if ((grille[i][j].lireCouleurDuJeton() == "vide")
-                        && grille[i][j].avoirTrouNoir == false
-                        && grille[i][j].avoirDesintegrateur == false) {
-                    System.out.print("_ "); // s'il n'y a ni de TN et D alors la case est vide on la note _
-                }
-                if (grille[i][j].lireCouleurDuJeton() == "rouge") { // si la cellule est occupé par un jeton rouge
-                    System.out.print("R"); // R apparait dans la cellule concerné
-                }
-
-                if (grille[i][j].lireCouleurDuJeton() == "jaune") { // si la cellule est occupé par un jeton jaune
-                    System.out.print("J"); // J apparait dans la cellule concerné
-
-                }
-                if (grille[i][j].avoirTrouNoir == true) {
-                    System.out.print(" O");
-                }
-                if ((grille[i][j].avoirDesintegrateur == true && grille[i][j].avoirTrouNoir == false)) {
-                    System.out.print(" D");
-                }
-
-            }
-            System.out.println();
-
+        for (int i=5;i>=0;i--){
+        System.out.print("\n");
+        for (int j=6;j>=0;j--){
+            System.out.print(grille[i][j]);
+            
+            
         }
+    }
     }
 
     public boolean presenceJeton(int ligne, int colonne) {
@@ -97,67 +79,39 @@ public class PlateauDeJeu { //on crée notre tableau
         return grille[ligne][colonne].lireCouleurDuJeton();
     }
 
-    public boolean etreGagnantePourCouleur(String uneCouleur) {
+    public boolean etreGagnantePourCouleur(String C) {
         boolean resultat = false;
 
-        for (int i = 0; i < 4; i++) {      //ici on verifie ligne gagnante 
-            for (int j = 0; j < 7; j++) {
-                if (grille[i][j].jetonCourant != null) {
-                    if (grille[i][j].lireCouleurDuJeton() == grille[i + 1][j].lireCouleurDuJeton()) {
-                        if (grille[i][j].lireCouleurDuJeton() == grille[i + 2][j].lireCouleurDuJeton()) {
-                            if (grille[i][j].lireCouleurDuJeton() == grille[i + 3][j].lireCouleurDuJeton()) {
-                                resultat = true;
-                            }
-                        }
-                    }
-                }
+        for (int i = 5; i>0; i--) {      //ici on verifie ligne gagnante 
+            for (int j = 3;j>0; j--) {
+                if (C.equals(grille[i][j].lireCouleurDuJeton())& C.equals(grille[i][j+1].lireCouleurDuJeton())& C.equals(grille[i][j+2].lireCouleurDuJeton()) & C.equals(grille[i][j+3].lireCouleurDuJeton())){
+                return true;
             }
         }
-
-        for (int i = 0; i < 4; i++) {      //verifie si colonne gagnante
-            for (int j = 0; j < 7; j++) {
-                if (grille[i][j].jetonCourant != null) {
-                    if (grille[i][j].lireCouleurDuJeton() == grille[i][j + 1].lireCouleurDuJeton()) {
-                        if (grille[i][j].lireCouleurDuJeton() == grille[i][j + 2].lireCouleurDuJeton()) {
-                            if (grille[i][j].lireCouleurDuJeton() == grille[i][j + 3].lireCouleurDuJeton()) {
-                                resultat = true;
-                            }
-                        }
-                    }
-                }
+        }
+            for (int i=2;i>=0;i--){        //verifie si colonne gagnante
+        for (int j=6;j>=0;j--){
+            if (C.equals(grille[i][j].lireCouleurDuJeton())& C.equals(grille[i+1][j].lireCouleurDuJeton())& C.equals(grille[i+2][j].lireCouleurDuJeton()) & C.equals(grille[i+3][j].lireCouleurDuJeton())){
+                return true;
             }
         }
-
-        //Diagonale montante gagnante
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 7; j++) {
-                if (grille[i][j].jetonCourant != null) {
-                    if (grille[i][j].lireCouleurDuJeton() == grille[i + 1][j + 1].lireCouleurDuJeton()) {
-                        if (grille[i][j].lireCouleurDuJeton() == grille[i + 2][j + 2].lireCouleurDuJeton()) {
-                            if (grille[i][j].lireCouleurDuJeton() == grille[i + 3][j + 3].lireCouleurDuJeton()) {
-                                resultat = true;
-                            }
-                        }
-                    }
-                }
+        }
+        for (int i=2;i>=0;i--){            //Diagonale montante gagnante
+        for (int j=3;j>=0;j--){
+            if (C.equals(grille[i][j].lireCouleurDuJeton())& C.equals(grille[i+1][j+1].lireCouleurDuJeton())& C.equals(grille[i+2][j+2].lireCouleurDuJeton()) & C.equals(grille[i+3][j+3].lireCouleurDuJeton())){
+                return true;
             }
         }
-        //Diagonale descendante gagnante en case 3
-        for (int i = 3; i < 7; i++) {
-            for (int j = 0; j < 4; j++) {
-                if (grille[i][j].jetonCourant != null) {
-                    if (grille[i][j].lireCouleurDuJeton() == grille[i - 1][j + 1].lireCouleurDuJeton()) {
-                        if (grille[i][j].lireCouleurDuJeton() == grille[i - 2][j + 2].lireCouleurDuJeton()) {
-                            if (grille[i][j].lireCouleurDuJeton() == grille[i - 3][j + 3].lireCouleurDuJeton()) {
-                                resultat = true;
-                            }
-                        }
-                    }
-                }
+        }        
+        for (int i=5;i>=3;i--){           //Diagonale descendante gagnante en case 3
+        for (int j=3;j>=0;j--){
+            if (C.equals(grille[i][j].lireCouleurDuJeton())& C.equals(grille[i-1][j+1].lireCouleurDuJeton())& C.equals(grille[i-2][j+2].lireCouleurDuJeton()) & C.equals(grille[i-3][j+3].lireCouleurDuJeton())){
+                return true;
             }
         }
+        }
+        
         return resultat;
-
     }
 
     public void tassercolonne(int colonne) {
@@ -168,13 +122,11 @@ public class PlateauDeJeu { //on crée notre tableau
                 }
             }
         }
+        
     }
 
     boolean colonneRemplie(int colonne) {
-        if (grille[5][colonne].presenceJeton()==true) {
-            return true;
-        }
-        return false;
+        return grille[5][colonne].jetonCourant != null;
     }
 
     public boolean presenceTrouNoir(int ligne, int colonne) {
