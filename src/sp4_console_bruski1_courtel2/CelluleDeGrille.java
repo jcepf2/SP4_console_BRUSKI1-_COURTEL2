@@ -9,9 +9,9 @@ package sp4_console_bruski1_courtel2;
  * @author jules
  */
 public class CelluleDeGrille { //création de la class CelluleDeGrille
-    private Jeton jetonCourant ; //ajout attribut "jetonCourant" associé au Jeton
-    private boolean avoirTrouNoir ;
-    private boolean avoirDesintegrateur ;  
+    Jeton jetonCourant ; //ajout attribut "jetonCourant" associé au Jeton
+    boolean avoirTrouNoir ;
+    boolean avoirDesintegrateur ;  
     /*ajout des attributs spécifique au super puissance 4*/
     
     public CelluleDeGrille() { //initialisation des attributs
@@ -36,7 +36,7 @@ public class CelluleDeGrille { //création de la class CelluleDeGrille
     
     public String lireCouleurDuJeton() {/*on renvoie la couleur du jeton si il est présent */  
         if (jetonCourant == null) {
-            return "la case est vide" ;
+            return "case vide" ;
         }
         else {
             return jetonCourant.lireCouleur() ;  
