@@ -59,9 +59,7 @@ public class PlateauDeJeu { //on crée notre tableau
         for (int i=5;i>=0;i--){
         System.out.print("\n");
         for (int j=6;j>=0;j--){
-            System.out.print(grille[i][j]);
-            
-            
+            System.out.print(grille[i][j]); 
         }
     }
     }
